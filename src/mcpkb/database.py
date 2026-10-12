@@ -34,7 +34,12 @@ class ReadOnlyDB:
         self.max_cell_chars = max_cell_chars
         self._deadline = float("inf")
         self._lock = threading.Lock()
-        self._conn = sqlite3.connect(f"{path.resolve().as_uri()}?mode=ro", uri=True, check_same_thread=False)
+        self._meta_lock = threading.Lock()
+        uri = f"{path.resolve().as_uri()}?mode=ro"
+        # user queries get their own connection with a permanent authorizer, metadata lookups use the other
+        self._meta = sqlite3.connect(uri, uri=True, check_same_thread=False)
+        self._conn = sqlite3.connect(uri, uri=True, check_same_thread=False)
+        self._conn.set_authorizer(self._authorize)
         self._conn.set_progress_handler(self._expired, 1000)
         if hasattr(self._conn, "setlimit"):
             # caps the size of any single string or blob a query can build
@@ -49,23 +54,31 @@ class ReadOnlyDB:
 
     def close(self) -> None:
         self._conn.close()
+        self._meta.close()
 
     def tables(self) -> list[str]:
-        rows = self._conn.execute(
+        with self._meta_lock:
+            return self._tables()
+
+    def _tables(self) -> list[str]:
+        rows = self._meta.execute(
             "SELECT name FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%' ORDER BY name"
         ).fetchall()
         return [r[0] for r in rows]
 
     def describe(self, table: str) -> dict:
-        if table not in self.tables():
-            raise QueryError(f"unknown table '{table}', available: {', '.join(self.tables())}")
-        cols = [{"name": r[1], "type": r[2] or ""} for r in self._conn.execute(f'PRAGMA table_info("{table}")')]
-        fks = [
-            {"column": r[3], "references": f"{r[2]}.{r[4]}"}
-            for r in self._conn.execute(f'PRAGMA foreign_key_list("{table}")')
-        ]
-        count = self._conn.execute(f'SELECT COUNT(*) FROM "{table}"').fetchone()[0]
-        sample = self._conn.execute(f'SELECT * FROM "{table}" LIMIT 3').fetchall()
+        with self._meta_lock:
+            tables = self._tables()
+            if table not in tables:
+                raise QueryError(f"unknown table '{table}', available: {', '.join(tables)}")
+            m = self._meta
+            cols = [{"name": r[1], "type": r[2] or ""} for r in m.execute(f'PRAGMA table_info("{table}")')]
+            fks = [
+                {"column": r[3], "references": f"{r[2]}.{r[4]}"}
+                for r in m.execute(f'PRAGMA foreign_key_list("{table}")')
+            ]
+            count = m.execute(f'SELECT COUNT(*) FROM "{table}"').fetchone()[0]
+            sample = m.execute(f'SELECT * FROM "{table}" LIMIT 3').fetchall()
         return {
             "table": table,
             "columns": cols,
@@ -88,7 +101,6 @@ class ReadOnlyDB:
     def _query(self, sql: str, max_rows: int) -> QueryResult:
         start = time.monotonic()
         self._deadline = start + self.timeout
-        self._conn.set_authorizer(self._authorize)
         try:
             cur = self._conn.execute(sql)
             rows = cur.fetchmany(max_rows + 1)
@@ -101,7 +113,6 @@ class ReadOnlyDB:
                 message = DENIED_HINT
             raise QueryError(message) from error
         finally:
-            self._conn.set_authorizer(None)
             self._deadline = float("inf")
         return QueryResult(
             columns,

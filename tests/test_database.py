@@ -109,3 +109,10 @@ def test_describe_unknown_table(db):
 def test_missing_file(tmp_path):
     with pytest.raises(FileNotFoundError):
         ReadOnlyDB(tmp_path / "nope.db")
+
+
+def test_metadata_still_works_after_a_denied_query(db):
+    with pytest.raises(QueryError):
+        db.query("DROP TABLE orders", 1)
+    assert db.describe("orders")["row_count"] == 400
+    assert db.tables() == ["customers", "order_items", "orders", "products"]

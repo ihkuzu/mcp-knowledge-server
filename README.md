@@ -88,7 +88,7 @@ MCPKB_INFERQ_URL=http://inferq-api:8000 docker compose --profile jobs up --build
 The earlier [sql-agent](https://github.com/ihkuzu/sql-agent) project checked queries with regular expressions. Here the database engine enforces it:
 
 1. **The file is opened with `mode=ro`.** SQLite itself refuses writes, whatever the query says.
-2. **An authorizer callback** allows only `SELECT`, `READ`, `FUNCTION` and `RECURSIVE` actions while a user query runs. `PRAGMA`, `ATTACH`, temp tables and every write are denied before execution, and the model gets a short explanation instead of the raw "not authorized".
+2. **An authorizer callback** on the connection that runs model-written SQL allows only `SELECT`, `READ`, `FUNCTION` and `RECURSIVE` actions. The server's own lookups (`describe_table`) use a second read-only connection without it. `PRAGMA`, `ATTACH`, temp tables and every write are denied before execution, and the model gets a short explanation instead of the raw "not authorized".
 3. **Resource limits.** A progress handler stops queries after the timeout, `fetchmany` caps rows, the string/blob length limit is 1 MB, and long cells are cut, so one query cannot fill the model's context.
 
 `sqlite3` already refuses more than one statement per call. Tests cover each denied statement type, a runaway recursive query and the size limits.
