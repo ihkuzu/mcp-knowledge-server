@@ -1,0 +1,338 @@
+[
+ {
+  "id": 1,
+  "question": "How many days do customers have to return a product?",
+  "doc": "returns-policy",
+  "section": "Return window",
+  "kind": "keyword"
+ },
+ {
+  "id": 2,
+  "question": "Is the return window longer for orders placed in December?",
+  "doc": "returns-policy",
+  "section": "Return window",
+  "kind": "keyword"
+ },
+ {
+  "id": 3,
+  "question": "Can earbuds be returned if the hygiene seal is broken?",
+  "doc": "returns-policy",
+  "section": "Hygiene products",
+  "kind": "keyword"
+ },
+ {
+  "id": 4,
+  "question": "When is the refund paid back after a return?",
+  "doc": "returns-policy",
+  "section": "Refunds",
+  "kind": "keyword"
+ },
+ {
+  "id": 5,
+  "question": "Which carrier ships standard parcels?",
+  "doc": "shipping-and-delivery",
+  "section": "Carriers and delivery times",
+  "kind": "keyword"
+ },
+ {
+  "id": 6,
+  "question": "From which order value is shipping free?",
+  "doc": "shipping-and-delivery",
+  "section": "Shipping costs",
+  "kind": "keyword"
+ },
+ {
+  "id": 7,
+  "question": "Can freight items be delivered to a Packstation?",
+  "doc": "shipping-and-delivery",
+  "section": "Delivery to packing stations",
+  "kind": "keyword"
+ },
+ {
+  "id": 8,
+  "question": "How long is the statutory guarantee?",
+  "doc": "warranty-and-repairs",
+  "section": "Legal guarantee",
+  "kind": "keyword"
+ },
+ {
+  "id": 9,
+  "question": "How much is the diagnosis fee for out of warranty repairs?",
+  "doc": "warranty-and-repairs",
+  "section": "Out of warranty repairs",
+  "kind": "keyword"
+ },
+ {
+  "id": 10,
+  "question": "What are the support opening hours on Saturday?",
+  "doc": "customer-support-playbook",
+  "section": "Channels and opening hours",
+  "kind": "keyword"
+ },
+ {
+  "id": 11,
+  "question": "How large a goodwill voucher can an agent grant without approval?",
+  "doc": "customer-support-playbook",
+  "section": "Goodwill gestures",
+  "kind": "keyword"
+ },
+ {
+  "id": 12,
+  "question": "How many characters must a password have?",
+  "doc": "it-access-and-accounts",
+  "section": "Passwords and multi factor authentication",
+  "kind": "keyword"
+ },
+ {
+  "id": 13,
+  "question": "What should I do if the VPN says certificate expired?",
+  "doc": "it-access-and-accounts",
+  "section": "VPN",
+  "kind": "keyword"
+ },
+ {
+  "id": 14,
+  "question": "Who approves access to production databases?",
+  "doc": "it-access-and-accounts",
+  "section": "Access requests",
+  "kind": "keyword"
+ },
+ {
+  "id": 15,
+  "question": "What does SEV1 mean?",
+  "doc": "incident-response",
+  "section": "Severity levels",
+  "kind": "keyword"
+ },
+ {
+  "id": 16,
+  "question": "Within how many minutes must the on-call engineer acknowledge a page?",
+  "doc": "incident-response",
+  "section": "Who responds",
+  "kind": "keyword"
+ },
+ {
+  "id": 17,
+  "question": "When is a postmortem required?",
+  "doc": "incident-response",
+  "section": "Postmortems",
+  "kind": "keyword"
+ },
+ {
+  "id": 18,
+  "question": "Are deployments allowed on Fridays?",
+  "doc": "deployment-process",
+  "section": "Release schedule",
+  "kind": "keyword"
+ },
+ {
+  "id": 19,
+  "question": "How many reviews do changes to payment code need?",
+  "doc": "deployment-process",
+  "section": "Branches and reviews",
+  "kind": "keyword"
+ },
+ {
+  "id": 20,
+  "question": "How long are support chat transcripts kept?",
+  "doc": "data-protection",
+  "section": "Retention periods",
+  "kind": "keyword"
+ },
+ {
+  "id": 21,
+  "question": "Within how many hours must a data breach be reported to the authority?",
+  "doc": "data-protection",
+  "section": "Data breaches",
+  "kind": "keyword"
+ },
+ {
+  "id": 22,
+  "question": "How long is the probation period?",
+  "doc": "onboarding",
+  "section": "Probation",
+  "kind": "keyword"
+ },
+ {
+  "id": 23,
+  "question": "What are the core hours?",
+  "doc": "onboarding",
+  "section": "Working time",
+  "kind": "keyword"
+ },
+ {
+  "id": 24,
+  "question": "Which order statuses count as revenue?",
+  "doc": "order-status-glossary",
+  "section": "Revenue in reports",
+  "kind": "keyword"
+ },
+ {
+  "id": 25,
+  "question": "I bought something three weeks ago and changed my mind, can I still send it back?",
+  "doc": "returns-policy",
+  "section": "Return window",
+  "kind": "paraphrase"
+ },
+ {
+  "id": 26,
+  "question": "A customer dropped their phone and the display is shattered, do we take it back?",
+  "doc": "returns-policy",
+  "section": "Condition of returned items",
+  "kind": "paraphrase"
+ },
+ {
+  "id": 27,
+  "question": "My package has not moved for a week, what happens now?",
+  "doc": "shipping-and-delivery",
+  "section": "Lost or damaged parcels",
+  "kind": "paraphrase"
+ },
+ {
+  "id": 28,
+  "question": "Do you deliver to Austria?",
+  "doc": "shipping-and-delivery",
+  "section": "Countries",
+  "kind": "paraphrase"
+ },
+ {
+  "id": 29,
+  "question": "Fixing the device would cost almost as much as a new one, what do we offer?",
+  "doc": "warranty-and-repairs",
+  "section": "Repair process",
+  "kind": "paraphrase"
+ },
+ {
+  "id": 30,
+  "question": "Should I wipe my laptop before I send it in?",
+  "doc": "warranty-and-repairs",
+  "section": "Data on returned devices",
+  "kind": "paraphrase"
+ },
+ {
+  "id": 31,
+  "question": "A customer says their power bank got really hot, what do I do?",
+  "doc": "customer-support-playbook",
+  "section": "Escalation",
+  "kind": "paraphrase"
+ },
+ {
+  "id": 32,
+  "question": "What do I need to check before talking to a caller about their order?",
+  "doc": "customer-support-playbook",
+  "section": "Identity check",
+  "kind": "paraphrase"
+ },
+ {
+  "id": 33,
+  "question": "The checkout is completely broken right after a release, what is the first thing to try?",
+  "doc": "incident-response",
+  "section": "First steps",
+  "kind": "paraphrase"
+ },
+ {
+  "id": 34,
+  "question": "Who tells customers what is going on during an outage?",
+  "doc": "incident-response",
+  "section": "Communication",
+  "kind": "paraphrase"
+ },
+ {
+  "id": 35,
+  "question": "Can we ship code during Black Friday week?",
+  "doc": "deployment-process",
+  "section": "Release schedule",
+  "kind": "paraphrase"
+ },
+ {
+  "id": 36,
+  "question": "Can I drop a table column in the same release that stops using it?",
+  "doc": "deployment-process",
+  "section": "Database migrations",
+  "kind": "paraphrase"
+ },
+ {
+  "id": 37,
+  "question": "A customer wants us to erase everything we know about them, who handles that?",
+  "doc": "data-protection",
+  "section": "Customer requests",
+  "kind": "paraphrase"
+ },
+ {
+  "id": 38,
+  "question": "How long do we hold on to invoices?",
+  "doc": "data-protection",
+  "section": "Retention periods",
+  "kind": "paraphrase"
+ },
+ {
+  "id": 39,
+  "question": "Can I work from home in my first weeks?",
+  "doc": "onboarding",
+  "section": "Working time",
+  "kind": "paraphrase"
+ },
+ {
+  "id": 40,
+  "question": "What happens to my login when I leave the company?",
+  "doc": "it-access-and-accounts",
+  "section": "Leaving the company",
+  "kind": "paraphrase"
+ },
+ {
+  "id": 41,
+  "question": "What is the parental leave policy?",
+  "doc": null,
+  "section": null,
+  "kind": "unanswerable"
+ },
+ {
+  "id": 42,
+  "question": "How do I book a meeting room?",
+  "doc": null,
+  "section": null,
+  "kind": "unanswerable"
+ },
+ {
+  "id": 43,
+  "question": "What is the price of the Laptop 16 in Austria?",
+  "doc": null,
+  "section": null,
+  "kind": "unanswerable"
+ },
+ {
+  "id": 44,
+  "question": "Which programming language is the order system written in?",
+  "doc": null,
+  "section": null,
+  "kind": "unanswerable"
+ },
+ {
+  "id": 45,
+  "question": "How do I claim travel expenses?",
+  "doc": null,
+  "section": null,
+  "kind": "unanswerable"
+ },
+ {
+  "id": 46,
+  "question": "What is the company's revenue target for next year?",
+  "doc": null,
+  "section": null,
+  "kind": "unanswerable"
+ },
+ {
+  "id": 47,
+  "question": "Is there a company pension plan?",
+  "doc": null,
+  "section": null,
+  "kind": "unanswerable"
+ },
+ {
+  "id": 48,
+  "question": "How do I reset the office printer?",
+  "doc": null,
+  "section": null,
+  "kind": "unanswerable"
+ }
+]
